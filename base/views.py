@@ -1,3 +1,5 @@
+
+
 from django.shortcuts import render
 # to show the time we need to import datetime module
 import datetime
@@ -12,6 +14,7 @@ def show(request):
 	'now' : now
 	}
 	return render(request, 'base.html', context)
+
 
 
 
