@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     # for user app
     'users',
     # The following apps  are required for django-allauth:
-    
+    'weather',
     
     'django.contrib.sites',
 
@@ -174,4 +174,4 @@ SOCIALACCOUNT_PROVIDERS = {
 SITE_ID = 2
 
 LOGIN_REDIRECT_URL = '/'
-#LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

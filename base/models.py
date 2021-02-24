@@ -24,7 +24,7 @@ class Blog(models.Model):
 	title        = models.CharField(max_length=300)
 	summary      = models.CharField(max_length=400)
 	blog         = models.TextField()
-	photo        = models.ImageField(upload_to=upload_image_path)
+	image        = models.ImageField(upload_to=upload_image_path)
 	is_published = models.BooleanField(default=True)
 	date         = models.DateTimeField(default = datetime.now)
 

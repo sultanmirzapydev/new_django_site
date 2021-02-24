@@ -25,6 +25,7 @@ from django.contrib.auth.views import LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
+    path('weather/', include('weather.urls')),
    # path('register/', include('users.urls')),
 
     path('auth/', TemplateView.as_view(template_name="users/auth.html")),

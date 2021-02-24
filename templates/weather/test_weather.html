@@ -1,0 +1,44 @@
+<body>
+<form id="myform" action="" method="post">
+	{% csrf_token %}
+	<span>Form will automatically submit in <b id="timer">20</b> <b>seconds</b>.</span>
+   ​<input name="temperature" id="temperature" value=" {{ city_weather.temperature }} " />
+   ​<input name="description" id="description" value="{{ city_weather.description }}" />
+   ​<input name="icon" id="icon" value="{{ city_weather.icon }}" />
+   ​<input name="Submit1" id="submit" type="submit" value="submit" />
+</form>
+
+<script type="text/javascript">
+
+         
+// Initializing timer variable.
+var x = 20;
+var y = document.getElementById("timer");
+// Display count down for 20 seconds
+setInterval(function(){
+if( x<=21 && x>=1)
+{
+x--;
+y.innerHTML= ''+x+'';
+if(x==1){
+x=21;
+}
+}
+}, 1000);
+
+// Form Submitting after 20 seconds.
+var auto_refresh = setInterval(function() { submitform(); }, 20000);
+// Form submit function.
+function submitform(){
+if( validate() ) // Calling validate function.
+{ alert('Form is submitting.....');
+document.getElementById("submit").submit();
+}
+}
+     </script>
+{{city_weather.city}}
+{{city_weather.temperature}}
+{{city_weather.description}}
+{{city_weather.icon}}
+
+</body>

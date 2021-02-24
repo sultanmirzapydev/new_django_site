@@ -1,0 +1,44 @@
+  <form method="POST">
+ <div class="container">
+  
+  <div class="row">
+    <div class="col">
+    
+    </div>
+    <div class="col-sm col-md-7 text-center">
+    	<div class="d-inline p-2 mr-5 text-white bg-secondary rounded">
+    	    Hyderabad, Telangana
+    	</div>
+    	<div class="d-inline p-2   text-white bg-success rounded">
+    		{{day_in_string}}
+    	</div>
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col-sm col-md mt-3">
+      <div class="d-block p-2 mr-5 text-white rounded" style="background-color:#198754">
+      	    	 <span class="ml-5">Temperature : </span ><span class="ml-2 "> {{ weather.temperature }}
+    	  	<span>&#8451;</span>  <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+    	  </span> 
+      	  
+    	    
+      </div>
+    	
+    </div>
+    <div class="col">
+     <div>
+     	<!-- <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png"> -->
+     </div>
+    </div>
+  </div>
+
+</div> 
+
+</form> 
