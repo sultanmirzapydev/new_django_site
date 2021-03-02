@@ -1,6 +1,82 @@
-<p> 
-<input type="radio" name="AppSource" value=1>Newspaper
-<input type="radio" name="AppSource" value=2>Recruiters
-<input type="radio" name="AppSource" value=3>Web Resume Banks
-<input type="radio" name="AppSource" value=4>Magazines
-</p>
+<div class="container-fluid bg-light">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 col-lg-5 mx-auto">
+
+      <!-- alerts -->
+
+        {% include 'partials/alerts.html' %}
+
+	<form action="{% url 'base' %}" method="POST">
+    {% csrf_token %}
+  
+
+    {% if user.is_authenticated %}
+
+
+              <input type="hidden" name="user_id" value="{{user.id}}"> 
+              <input type="hidden" name="user_name" value="{{ user.username }}">
+
+
+            {% else %}
+
+              <input type="hidden" name="user_id" value="0">
+              <input type="hidden" name="user_name" value="unknown">
+            {% endif %}
+
+
+
+    {% for item in query %}
+		
+			<table>
+        <tr>
+            <td>
+                {{ item.id }} ) {{ item.question }}?
+                <input type="hidden" name="item{{ item.id }}_question" value="{{ item.question }}">
+                <input type="hidden" name="item_id" value="{{ item.id }}">
+
+            </td>
+
+        </tr>
+        
+        <tr>
+          <td>
+            <input type="radio" id="option1"  value="{{ item.option1 }}" name="{{ item.id }}"> {{ item.option1 }}
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <input type="radio" id="option2" value="{{ item.option2 }}" name="{{ item.id }}"> {{ item.option2 }}
+          </td>
+        </tr>
+        
+
+
+      </table>
+      <br>
+        
+        
+
+        {% endfor  %}
+
+
+       
+
+        <!-- this below code is for feedback -->
+        <div class="form-group">
+                  <label for="feedback">Feedback :</label>
+                  
+                  <textarea name="feedback" class="form-control"></textarea>
+        </div>
+
+         <input type="submit" value="Submit"  class="btn btn-secondary btn-block">
+				
+	</form>
+	</div>
+	</div>
+</div>
+
+
+
+

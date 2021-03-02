@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'users',
     # The following apps  are required for django-allauth:
     'weather',
+    'survey',
+    'blog',
     
     'django.contrib.sites',
 
@@ -175,3 +177,12 @@ SITE_ID = 2
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Messages
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    
+}

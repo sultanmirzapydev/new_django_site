@@ -13,7 +13,7 @@ def weather(request):
      
 
     response = requests.get(url.format(city)).json()
-    print(response)
+    
 
     city_weather = {
         'city':city,
@@ -22,10 +22,7 @@ def weather(request):
         'icon':       response['weather'][0]['icon'],
 
     }
-    print(city_weather)
-
-    context = {'city_weather': city_weather}
-    print(context)
-
     
-    return render(request, 'weather/test_weather.html', context)
+    return city_weather
+
+   
