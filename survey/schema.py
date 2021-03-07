@@ -7,7 +7,7 @@ class ChoiceType(DjangoObjectType):
         model = Choice
 
 class ChoiceQuery(graphene.ObjectType):
-    Choices = graphene.List(ChoiceType)
+    choices = graphene.List(ChoiceType)
 
     def resolve_Choices(self, info, **kwargs):
         return Choice.objects.all()
