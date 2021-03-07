@@ -20,6 +20,10 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
 
+from django.views.decorators.csrf import csrf_exempt
+
+from graphene_django.views import GraphQLView
+
 
 
 urlpatterns = [
@@ -28,6 +32,8 @@ urlpatterns = [
     path('weather/', include('weather.urls')),
     path('bloglistview/', include('blog.urls')),
    # path('register/', include('users.urls')),
+
+    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
 
     path('auth/', TemplateView.as_view(template_name="users/auth.html")),
     path('accounts/', include('allauth.urls')),

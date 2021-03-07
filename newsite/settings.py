@@ -46,14 +46,17 @@ INSTALLED_APPS = [
     'weather',
     'survey',
     'blog',
-    
+
+
+    "graphene_django",
+
     'django.contrib.sites',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -92,8 +95,11 @@ WSGI_APPLICATION = 'newsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'basesitedb',
+        'USER': 'postgres',
+        'PASSWORD': 'sultanmirza136id',
+        'HOST': 'localhost'
     }
 }
 
@@ -135,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-#static_url is to create url path for static files 
+#static_url is to create url path for static files
 
 STATIC_URL = '/static/'
 
@@ -184,5 +190,12 @@ LOGOUT_REDIRECT_URL = '/'
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-    
+
+}
+
+
+AUTH_USER_MODEL = 'users.User'
+
+GRAPHENE = {
+    "SCHEMA": "newsite.schema.schema"
 }
