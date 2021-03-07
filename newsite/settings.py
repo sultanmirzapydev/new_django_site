@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
 
+
+
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -194,7 +197,7 @@ MESSAGE_TAGS = {
 }
 
 
-AUTH_USER_MODEL = 'users.User'
+
 
 GRAPHENE = {
     "SCHEMA": "newsite.schema.schema"

@@ -3,9 +3,9 @@
 <div class="row">
 {% if user.is_authenticated %}
 <button class="btn btn-success mr-1">
-  Welcome, {{ user.username }} !
+  Welcome, {{ user.email }} !
   </button>
-  
+
 
   <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}
@@ -18,7 +18,7 @@
 {% else %}
 
 
-	
+
   <a href="{% provider_login_url 'google' %}" class="nounderline">
   	<button type="button" class="btn btn-warning ">
 
