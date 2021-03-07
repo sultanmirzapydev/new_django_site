@@ -14,12 +14,10 @@
 			</span>
 		</button>
 		<strong>
-			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-				Error:
-			{% else %}
-				{{message.tags | title }}:
+			
+				message:
 
-			{% endif %}
+			
 		</strong>
 		{{message}}
 	</div>

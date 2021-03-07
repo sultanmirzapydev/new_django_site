@@ -1,12 +1,11 @@
 import graphene
 
-import users.schema
-from survey.schema import ChoiceQuery,FeedbackQuery
+from users.schema import UserQuery
+from survey.schema import ChoiceQuery, FeedbackQuery
 
 
-class Query(users.schema.Query, FeedbackQuery, ChoiceQuery, graphene.ObjectType):
+class Query(FeedbackQuery, ChoiceQuery, UserQuery, graphene.ObjectType):
     pass
 
 
 schema = graphene.Schema(query=Query)
-

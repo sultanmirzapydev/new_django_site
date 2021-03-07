@@ -1,5 +1,6 @@
 
 
+
 from django.shortcuts import render
 # to show the time we need to import datetime module
 import datetime
@@ -26,7 +27,7 @@ def day_in_string(request):
 
 def blog_listview(request):
 	blogs = Blog.objects.order_by('-date').filter(is_published=True)
-	print(blogs)
+	
 	return blogs
 
 	
@@ -36,7 +37,10 @@ def base(request):
 	str_day = day_in_string(request)
 	blog_list = blog_listview(request)
 	query = survey(request)
+
 	city_weather = weather(request)
+
+
 
    
 

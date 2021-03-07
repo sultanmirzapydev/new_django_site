@@ -3,7 +3,7 @@ from .models import Blog
 
 def blog_detailsview(request, pk):
 	instance = get_object_or_404(Blog, pk=pk)
-	print(instance)
+
 
 	
 	
