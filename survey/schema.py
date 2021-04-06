@@ -11,6 +11,8 @@ class ChoiceQuery(graphene.ObjectType):
 
     def resolve_Choices(self, info, **kwargs):
         return Choice.objects.all()
+        print(Choice)
+
 
 
 #schema = graphene.Schema(query=Query)
