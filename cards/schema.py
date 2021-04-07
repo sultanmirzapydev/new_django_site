@@ -14,6 +14,15 @@ class CardQuery(graphene.ObjectType):
 		return Card.objects.all()
 
 
+class DeckCardsQuery(graphene.ObjectType):
+	deck_cards = graphene.List(CardType, deck=graphene.Int())
+
+	def resolve_deck_cards(self, info, deck):
+		return Card.objects.filter(deck=deck)
+
+
+
+
 # To create a new card from graphql, we need below code to execute
 
 class CreateCard(graphene.Mutation):
