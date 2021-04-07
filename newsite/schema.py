@@ -2,8 +2,9 @@ import graphene
 
 from users.schema import UserQuery
 from survey.schema import ChoiceQuery, FeedbackQuery
-from decks.schema import DeckQuery
-from cards.schema import CardQuery, Mutation
+from decks.schema import DeckQuery, DeckMutation
+
+from cards.schema import CardQuery, CardMutation
 
 
 
@@ -12,7 +13,7 @@ class Query(FeedbackQuery, CardQuery, ChoiceQuery, DeckQuery, UserQuery, graphen
     pass
 
 
-class Mutation(Mutation, graphene.ObjectType):
+class Mutation(CardMutation, DeckMutation, graphene.ObjectType):
     pass
 
 schema = graphene.Schema(query=Query, mutation=Mutation)

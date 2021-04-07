@@ -20,7 +20,7 @@ class CreateDeck(graphene.Mutation):
 	deck = graphene.Field(DeckType)
 
 	class Arguments:
-		title = graphene.String()
+		title = graphene.String() 
 		description = graphene.String()
 		
 
@@ -30,5 +30,5 @@ class CreateDeck(graphene.Mutation):
 		deck_mutate.save()
 		return CreateDeck(deck=deck_mutate)
 
-class Mutation(graphene.ObjectType):
+class DeckMutation(graphene.ObjectType):
 	create_deck = CreateDeck.Field()

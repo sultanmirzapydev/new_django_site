@@ -14,7 +14,7 @@ class CardQuery(graphene.ObjectType):
 		return Card.objects.all()
 
 
-
+# To create a new card from graphql, we need below code to execute
 
 class CreateCard(graphene.Mutation):
 	card = graphene.Field(CardType)
@@ -31,5 +31,5 @@ class CreateCard(graphene.Mutation):
 		card_mutate.save()
 		return CreateCard(card=card_mutate)
 
-class Mutation(graphene.ObjectType):
+class CardMutation(graphene.ObjectType):
 	create_card = CreateCard.Field()
