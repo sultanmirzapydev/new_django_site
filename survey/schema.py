@@ -1,6 +1,7 @@
 from graphene_django import DjangoObjectType
 import graphene
 from .models import Choice
+from .models import Feedback
 
 class ChoiceType(DjangoObjectType):
     class Meta:
@@ -20,9 +21,7 @@ class ChoiceQuery(graphene.ObjectType):
 
 # Below code is for Feedback model
 
-from graphene_django import DjangoObjectType
-import graphene
-from .models import Feedback
+
 
 class FeedbackType(DjangoObjectType):
     class Meta:

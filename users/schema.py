@@ -1,29 +1,17 @@
 from django.contrib.auth import get_user_model
-
 from graphene_django import DjangoObjectType
 import graphene
-# from users.models import User as UserModel
+# from users.models import CustomUser as UserModel
 from django.contrib.auth.models import User as UserModel
 
+
+
+
+
+
 class UserType(DjangoObjectType):
-	class Meta:
-		model = UserModel
-
-class UserQuery(graphene.ObjectType):
-	users = graphene.List(UserType)
-	def resolve_users(self, info, **kwargs):
-		return UserModel.objects.all()
-
-
-# To create a new user from the Graphql api
-
-
-
-
-
-#class UserType(DjangoObjectType):
-   # class Meta:
-      #  model = get_user_model()
+    class Meta:
+        model = get_user_model()
 
 
 class CreateUser(graphene.Mutation):
@@ -47,3 +35,20 @@ class CreateUser(graphene.Mutation):
 
 class UserMutation(graphene.ObjectType):
     create_user = CreateUser.Field()
+	
+
+class UserQuery(graphene.ObjectType):
+    users = graphene.List(UserType)
+    me    = graphene.Field(UserType)
+
+    def resolve_users(self, info):
+        return get_user_model().objects.all()
+
+    def resolve_me(self, info):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception('Not logged in!')
+
+        return user
+
+

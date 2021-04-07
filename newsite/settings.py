@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'decks',
 
 
-    "graphene_django",
+    'graphene_django',
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
+    'graphql_auth',
 
     'django.contrib.sites',
 
@@ -166,13 +168,15 @@ STATIC_ROOT = os.path.join(BASE_DIR,   'static_files')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+
 # This code is required for django-allauth package to do backend authentication
 AUTHENTICATION_BACKENDS = [
+    'graphql_auth.backends.GraphQLAuthBackend',
+    #'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    'graphql_jwt.backends.JSONWebTokenBackend',
-    
-]
+    ]
 
 #Below code is to enable email scope to receive user’s email addresses after successful social login
 
@@ -206,8 +210,8 @@ MESSAGE_TAGS = {
 
 
 GRAPHENE = {
-    "SCHEMA": "newsite.schema.schema",
+    "SCHEMA": "newsite.schema.schema",   
     'MIDDLEWARE': [
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
-    ],
+    ], 
 }
