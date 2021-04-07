@@ -45,3 +45,27 @@ class CreateCard(graphene.Mutation):
 
 class CardMutation(graphene.ObjectType):
 	create_card = CreateCard.Field()
+
+
+# To update any particular card we need to use this code.
+
+class UpdateCard(graphene.Mutation):
+	card = graphene.Field(CardType)
+
+	class Arguments:
+		question = graphene.String()
+		answer = graphene.String()
+		card_id = graphene.Int()
+
+	def mutate(self, info, question, answer, card_id):
+		card_update = Card.objects.get(id=card_id)
+
+		#cardupdate = card_update(question=question, answer=answer)
+		card_update.question = question
+		card_update.answer = answer
+		card_update.save()
+
+		return UpdateCard(card=card_update)
+
+class CardUpdate(graphene.ObjectType):
+	update_card =  UpdateCard.Field()
