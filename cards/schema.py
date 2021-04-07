@@ -60,7 +60,7 @@ class UpdateCard(graphene.Mutation):
 	def mutate(self, info, question, answer, card_id):
 		card_update = Card.objects.get(id=card_id)
 
-		#cardupdate = card_update(question=question, answer=answer)
+		
 		card_update.question = question
 		card_update.answer = answer
 		card_update.save()
