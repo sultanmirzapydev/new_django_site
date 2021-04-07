@@ -14,9 +14,12 @@ class CardQuery(graphene.ObjectType):
 		return Card.objects.all()
 
 
-class DeckCardsQuery(graphene.ObjectType):
-	deck_cards = graphene.List(CardType, deck=graphene.Int())
+# This below code is to make the query for all the cards associated with a particular deck
 
+class DeckCardsQuery(graphene.ObjectType):
+	# we need to define what we want to  make query of 
+	deck_cards = graphene.List(CardType, deck=graphene.Int())
+# This code is to return the query
 	def resolve_deck_cards(self, info, deck):
 		return Card.objects.filter(deck=deck)
 
