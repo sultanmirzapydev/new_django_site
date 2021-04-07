@@ -15,3 +15,20 @@ class DeckQuery(graphene.ObjectType):
 # schema = graphene.Schema(query=Query)
 
 
+
+class CreateDeck(graphene.Mutation):
+	deck = graphene.Field(DeckType)
+
+	class Arguments:
+		title = graphene.String()
+		description = graphene.String()
+		
+
+	def mutate(self, info, title, description):
+		deck_mutate = Deck(title=title, description=description)
+		
+		deck_mutate.save()
+		return CreateDeck(deck=deck_mutate)
+
+class Mutation(graphene.ObjectType):
+	create_deck = CreateDeck.Field()
