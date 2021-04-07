@@ -73,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'newsite.urls'
@@ -168,7 +169,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # This code is required for django-allauth package to do backend authentication
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    
 ]
 
 #Below code is to enable email scope to receive user’s email addresses after successful social login
@@ -203,5 +206,8 @@ MESSAGE_TAGS = {
 
 
 GRAPHENE = {
-    "SCHEMA": "newsite.schema.schema"
+    "SCHEMA": "newsite.schema.schema",
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }

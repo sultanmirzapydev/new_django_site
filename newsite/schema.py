@@ -1,6 +1,8 @@
 import graphene
+import graphql_jwt
 
-from users.schema import UserQuery
+
+from users.schema import UserQuery, UserMutation
 from survey.schema import ChoiceQuery, FeedbackQuery
 from decks.schema import DeckQuery, DeckMutation, DeckUpdate
 
@@ -13,7 +15,9 @@ class Query(FeedbackQuery, DeckCardsQuery, CardQuery, ChoiceQuery, DeckQuery, Us
     pass
 
 
-class Mutation(CardMutation, DeckMutation, CardUpdate, DeckUpdate, graphene.ObjectType):
-    pass
+class Mutation(CardMutation, DeckMutation, UserMutation, CardUpdate, DeckUpdate, graphene.ObjectType):
+    token_auth = graphql_jwt.ObtainJSONWebToken.Field()
+    verify_token = graphql_jwt.Verify.Field()
+    refresh_token = graphql_jwt.Refresh.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
