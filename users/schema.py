@@ -53,6 +53,7 @@ class UserQuery(graphene.ObjectType):
 
 
 class AuthMutation(graphene.ObjectType):
+	# To create a new user from Graphql interface
 	register = mutations.Register.Field()
 	verify_account = mutations.VerifyAccount.Field()
 	token_auth = mutations.ObtainJSONWebToken.Field()
