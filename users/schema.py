@@ -1,3 +1,4 @@
+# we need to import get_user_model to get the user model
 from django.contrib.auth import get_user_model
 from graphene_django import DjangoObjectType
 import graphene
@@ -8,20 +9,22 @@ from graphql_auth import mutations
 
 
 
-
+# This code is to make the get_user_model to grphql type
 class UserType(DjangoObjectType):
     class Meta:
         model = get_user_model()
 
-
+# This code is used for showing the output 
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)
 
+    #  Field that we want to pass as argument to create a new user
     class Arguments:
         username = graphene.String(required=True)
         password = graphene.String(required=True)
         email = graphene.String(required=True)
 
+    # This is where the backend  logic happens  in order to crate a new user
     def mutate(self, info, username, password, email):
         user = get_user_model()(
             username=username,
@@ -32,18 +35,18 @@ class CreateUser(graphene.Mutation):
 
         return CreateUser(user=user)
 
-
 class UserMutation(graphene.ObjectType):
     create_user = CreateUser.Field()
 	
 
+# This class is use for making query of all the users
 class UserQuery(graphene.ObjectType):
     users = graphene.List(UserType)
     me    = graphene.Field(UserType)
 
     def resolve_users(self, info):
         return get_user_model().objects.all()
-
+        # To get the user who is logged in for graphql api
     def resolve_me(self, info):
         user = info.context.user
         if user.is_anonymous:
@@ -51,7 +54,7 @@ class UserQuery(graphene.ObjectType):
 
         return user
 
-
+# This class is used to register new user or verify or update user
 class AuthMutation(graphene.ObjectType):
 	# To create a new user from Graphql interface
 	register = mutations.Register.Field()
