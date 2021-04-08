@@ -170,6 +170,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
+
 # This code is required for django-allauth package to do backend authentication
 AUTHENTICATION_BACKENDS = [
     'graphql_auth.backends.GraphQLAuthBackend',

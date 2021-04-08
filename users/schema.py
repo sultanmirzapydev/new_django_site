@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from graphene_django import DjangoObjectType
 import graphene
 # from users.models import CustomUser as UserModel
-from django.contrib.auth.models import User as UserModel
+#from django.contrib.auth.models import User as UserModel
 from graphql_auth import mutations
 
 
