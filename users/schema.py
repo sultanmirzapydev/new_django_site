@@ -54,3 +54,4 @@ class UserQuery(graphene.ObjectType):
 
 class AuthMutation(graphene.ObjectType):
 	register = mutations.Register.Field()
+	verify_account = mutations.VerifyAccount.Field()

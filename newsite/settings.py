@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'graphql_auth',
+    'django_filters',
 
     'django.contrib.sites',
 
@@ -196,7 +197,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SITE_ID = 5
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+#LOGOUT_REDIRECT_URL = '/'
 
 
 # Messages
@@ -221,8 +222,10 @@ GRAPHENE = {
 GRAPHQL_JWT = {
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_auth.mutations.Register",
+        "graphql_auth.mutations.VerifyAccount",
     ],
     "JWT_VERIFY_EXPIRATION": True,
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
 }
 
 
