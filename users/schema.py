@@ -61,7 +61,9 @@ class AuthMutation(graphene.ObjectType):
 	token_auth = mutations.ObtainJSONWebToken.Field()
 	# To update the account
 	update_account = mutations.UpdateAccount.Field()
-	# If for some reason the user was unble to received the verification mail, then we need this code to send it again
+	# If for some reason the user was unble to received the verification email, then we need this code to send it again
 	resend_activation_email = mutations.ResendActivationEmail.Field()
+	# For changing the user's password, we need to send an email to the user
 	send_password_reset_email = mutations.SendPasswordResetEmail.Field()
+	# Finally, this code is used to reset the password
 	password_reset = mutations.PasswordReset.Field()
