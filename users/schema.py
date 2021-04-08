@@ -3,7 +3,7 @@ from graphene_django import DjangoObjectType
 import graphene
 # from users.models import CustomUser as UserModel
 from django.contrib.auth.models import User as UserModel
-
+from graphql_auth import mutations
 
 
 
@@ -52,3 +52,5 @@ class UserQuery(graphene.ObjectType):
         return user
 
 
+class AuthMutation(graphene.ObjectType):
+	register = mutations.Register.Field()
